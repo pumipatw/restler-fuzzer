@@ -115,9 +115,8 @@ def publish_engine_py(dirs):
     print("Testing compilation of Python files...")
     try:
         copy_python_files(dirs.repository_root_dir, dirs.engine_build_dir)
-
         try:
-            output = subprocess.run(f'{dirs.python_path} -m compileall {dirs.engine_build_dir}', shell=True, capture_output=True, check=True)
+            output = subprocess.run(f'python3 -m compileall {dirs.engine_build_dir}', shell=True, capture_output=True, check=True)
         except subprocess.CalledProcessError as e:
             print("Build failed!")
             print(e.stderr)
